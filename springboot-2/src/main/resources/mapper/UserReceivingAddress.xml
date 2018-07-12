@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.0.0
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- user_action_log -->
+<mapper namespace="com.shengtian.lanfu.dao.UserReceivingaddressDao">
+<!-- 新增用户地址 -->
+<insert id="insertuserReceivingaddress" parameterType="userReceivingAddress">
+INSERT INTO userReceivingAddress(userId,address) VALUES(#{userId},#{address})
+
+</insert>
+<!-- 查询用户地址列表 -->
+<select id="selectListuserReceivingaddress" resultType="com.shengtian.lanfu.bean.UserAddressBean">
+
+	SELECT 
+	u.id as "id",
+	u.userId as "userId",
+	u.address as "address",
+	u2.userName as "userName",
+	u2.phone as "phone" 
+	FROM userReceivingAddress u LEFT JOIN user u2 on u.userId=u2.id
+	
+</select>
+<!-- 更新用户收货地址 -->
+<update id="updateReceivingaddress"  parameterType="userReceivingAddress">
+
+update  userReceivingAddress set address=#{address} where id=#{id} 
+</update>
+
+<!-- 删除收货地址 -->
+<delete id="deleteReceivingaddress">
+
+delete from userReceivingAddress where id=#{id}
+</delete>
+
+
+
+
+</mapper>

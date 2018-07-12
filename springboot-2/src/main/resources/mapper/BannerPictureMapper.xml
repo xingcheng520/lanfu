@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.0.0
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- user_action_log -->
+<mapper namespace="com.shengtian.lanfu.dao.BannerPictureDao">
+<!-- 查询轮播地址集合 -->
+<select id="getBannerPictureList" resultType="BannerPicture">
+SELECT id,state,picture_url as "pictureUrl" from  banner_picture where state=1
+
+</select>
+<!-- 查询轮播地址 -->
+<select id="getBannerPicture" resultType="BannerPicture">
+SELECT id,state,picture_url as "pictureUrl",picture_address as "pictureAddress" from  banner_picture where id=#{pictureId}
+
+</select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.0.0
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- user_action_log -->
+<mapper namespace="com.shengtian.lanfu.dao.UserDao">
+<!-- 根据手机号查询用户信息 -->
+ <select id="selectUser"  parameterType="string" resultType="com.shengtian.lanfu.model.User">
+ 
+ SELECT id,userName,phone,`passWord`,massgeTime,invitationCode,balance FROM `user` where phone=#{phone}
+ 
+ </select>
+<!-- 新增用户 -->
+<insert id="insertUser" parameterType="com.shengtian.lanfu.model.User">
+  insert into user(userName,phone,passWord,massgeTime,invitationCode)
+  values(#{userName},#{phone},#{passWord},#{massgeTime},#{invitationCode})
+
+</insert>
+<!-- 修改该用户名 -->
+<update id="updateUserName" parameterType="com.shengtian.lanfu.model.User">
+
+update  user set userName=#{userName} where id=#{id}  
+ 
+</update>
+<!-- 修改该手机号 -->
+<update id="updateUserphone" parameterType="com.shengtian.lanfu.model.User">
+
+update  user set phone=#{phone} where id=#{id}  
+ 
+</update>
+<!-- 根据用户id查询用户邀请码 -->
+ <select id="getUserInvitationCodeById"   resultType="com.shengtian.lanfu.model.User">
+ 
+ SELECT id,userName,phone,`passWord`,massgeTime,invitationCode FROM `user` where id=#{id}
+ 
+ </select>
+
+</mapper>
